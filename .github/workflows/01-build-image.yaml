@@ -146,6 +146,7 @@ jobs:
         uses: devops-infra/action-pull-request@v0.5.5
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          repository: leosilvasouza/container-technologies-and-devsecops
           source_branch: develop
           target_branch: main
           title: Automatic Pull Request
