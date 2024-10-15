@@ -122,7 +122,10 @@ jobs:
       - name: Build an image from Dockerfile
         env:
           DOCKER_BUILDKIT: 1
+        working-directory: ${{ github.workspace }}  
         run: |
+          pwd
+          ls -lha
           docker build -f ./Dockerfile -t ${{ secrets.DOCKERHUB_USERNAME }}/container-technologies:v${{ steps.calculate-version.outputs.version-string }} .
 
       - name: Run Trivy vulnerability scanner
