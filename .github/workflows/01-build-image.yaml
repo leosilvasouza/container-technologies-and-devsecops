@@ -9,6 +9,9 @@ on:
 jobs:
   security:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
     permissions:
       actions: read
       contents: read
@@ -27,6 +30,9 @@ jobs:
   code-analysis:
     name: Analyze with SonarCloud
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
     steps:
       - uses: actions/checkout@v4
         with:
@@ -59,6 +65,9 @@ jobs:
     needs: 
       - code-analysis
       - security
+    defaults:
+      run:
+        working-directory: app  
     steps:
       - name: Checkout
         uses: actions/checkout@v4
